@@ -1,0 +1,4 @@
+# Ignore tous les fichiers .spec
+target/
+*.spec
+build/
