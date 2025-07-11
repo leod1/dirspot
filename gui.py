@@ -69,6 +69,15 @@ class Worker(QThread):
         duration = perf_counter() - start
         sorted_root = sort_results(results)
 
+        print(f"Analyse terminée : {self.path}")
+        print(f"Nombre de fichiers : {file_count}, Nombre de dossiers : {dir_count}")
+        print(f"Taille totale : {human_readable_size(sum(sorted_root.values()))}")
+        print(f"Durée de l'analyse : {duration:.2f} secondes")
+        print(f"éléments par seconde : {file_count / duration:.2f}")
+        print(f"dossiers par seconde : {dir_count / duration:.2f}")
+        print(f"fichiers par seconde : {file_count / duration:.2f}")
+        print(f"Taille par seconde : {human_readable_size(sum(sorted_root.values()) / duration)}    ")
+
         flat_cache = {}
         for dir_path, content in full_cache.items():
             if isinstance(content, dict):
